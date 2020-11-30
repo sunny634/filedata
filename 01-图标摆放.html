@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				background-color: #eee;
+				;
+			}
+
+			.box {
+				position: relative;
+				margin: 100px auto;
+				width: 500px;
+			}
+
+			td {
+				width: 50px;
+				height: 50px;
+				position: relative;
+			}
+
+			td div {
+				position: absolute;
+				left: 1px;
+				top: 2px;
+			}
+
+			.hei {
+				width: 45px;
+				height: 45px;
+				border-radius: 45px;
+				background-color: #000;
+				position: absolute;
+				left: -100px;
+				top: 100px;
+			}
+
+			.bai {
+				width: 45px;
+				height: 45px;
+				border-radius: 45px;
+				background-color: #fff;
+				position: absolute;
+				right: -100px;
+				top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="hei" draggable="true" ondragstart="dragstar('#000')">
+
+			</div>
+			<div class="bai" draggable="true" ondragstart="dragstar('#fff')">
+
+			</div>
+			<table border="1" cellpadding="0" cellspacing="0">
+
+			</table>
+		</div>
+	</body>
+</html>
+<script>
+	// 找到table 
+	let cs = '';
+	let tb = document.querySelector("table");
+	let h = 6;
+	let l = 10;
+	for (let i = 0; i < h; i++) {
+		// 有多少行就有多少tr 
+		let tr = document.createElement("tr");
+		// 每个tr里面要装10个td 
+		for (let k = 0; k < l; k++) {
+			let td = document.createElement("td");
+			td.setAttribute("hang", i + 1);
+			td.setAttribute("lie", k + 1);
+			tr.appendChild(td);
+		}
+		// 将tr加到table里面去
+		tb.appendChild(tr);
+	}
+
+	// 为所有的td都绑定ondrop事件
+	let aTd = document.querySelectorAll("td");
+	for (let i = 0; i < aTd.length; i++) {
+		aTd[i].ondragover = function(event) {
+			event.preventDefault();
+		}
+		aTd[i].ondrop = function() {
+			this.innerHTML = `<div style="width:45px;height:45px;border-radius:45px;background-color:${cs};"></div>`;
+			//获取当前列的所有的棋子,看有没有五个连在一起的棋子,而且是颜色相同的
+			let l = this.getAttribute("lie");
+			let allL = document.querySelectorAll(`td[lie="${l}"]`);
+
+			let hei = 0,
+				bai = 0;
+			let firstHei = 0;
+			let firstBai = 0;
+
+			for (let i = 0; i < allL.length; i++) {
+				// 判断td是否存在
+				if (allL[i]) {
+					// 判断里面是否有棋子
+					if (allL[i].innerHTML == "") {
+						//没有棋子,黑白都要归0
+						hei = 0;
+						bai = 0;
+					} else {
+						//有棋子...根据标签的名称获取节点,此方法默认拿到的是一个数组，哪怕只有一个值
+						let d = allL[i].getElementsByTagName("div")[0];
+						let bg = d.style.backgroundColor;
+						if (bg == "rgb(0, 0, 0)") {
+							bai = 0;
+							hei = hei + 1;
+							
+							// 如果是第一粒黑子，我们把位置记录下来
+							if(hei == 1){
+								firstHei = i+1;
+							}
+							if (hei == 5) {
+								console.log("黑龙黑龙黑龙",firstHei)
+								// 清除 当前列的第firstHei ,+1 + 2 +3 +4这5个td里面的内容
+								for(let xx=firstHei;xx<5+firstHei;xx++){
+									console.log(`td[lie="${l}"][hang="${xx}"]`);
+									let wuzi = document.querySelector(`td[lie="${l}"][hang="${xx}"]`);
+									wuzi.innerHTML = "";
+								}
+							}
+						} else {
+							hei = 0;
+							bai = bai + 1;
+							
+							if(bai == 1){
+								firstBai = i;
+							}
+							
+							if (bai == 5) {
+								console.log("白龙万岁",firstBai)
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	function dragstar(c) {
+		cs = c;
+	}
+</script>
