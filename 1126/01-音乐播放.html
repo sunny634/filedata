@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			audio{outline: none;border:2px solid blue;border-radius:30px;margin:50px;width:1px;height:1px;opacity: 0;}
+			.next{border:2px solid blue;border-radius:30px;outline: none;}
+		</style>
+	</head>
+	<body>
+		<audio class="dage" src="../music/遇见.mp3" controls  preload="metadata"></audio>
+		<button class="next">下一首</button>
+		<button class="pause">暂停</button>
+		<button class="replay">重新播放</button>
+		<button class="pyl">偏移量</button>
+	</body>
+</html>
+<script>
+	let ms = ['遇见.mp3',"回忆那么伤.mp3"];
+	let index = 0;
+	let next = document.querySelector(".next");
+	let dage = document.querySelector(".dage");
+	
+	next.onclick=playMu;
+	
+	function playMu(){
+		dage.src="../music/"+ms[++index]
+		dage.play();
+	}
+	
+	let puase = document.querySelector(".pause");
+	puase.onclick=function(){
+		if(this.innerHTML == "暂停"){
+			dage.pause();
+		}else{
+			dage.play();
+		}
+		this.innerHTML = this.innerHTML == '暂停' ? '播放' : '暂停';
+		
+	}
+	
+	let rep = document.querySelector(".replay");
+	rep.onclick=function(){
+		dage.load();
+		dage.play();
+	}
+	
+	let pyl = document.querySelector(".pyl");
+	pyl.onclick=function(){
+		let p = dage.fastSeek(10)
+		console.log(p);
+	}
+</script>

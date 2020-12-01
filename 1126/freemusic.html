@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		.all {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			background-image: linear-gradient(to top right, #010101, #59505a);
+		}
+
+		.header {
+			width: 100%;
+			height: 50px;
+			border: 1px solid red;
+		}
+
+		.logo {
+			display: inline-block;
+			font-size: 20px;
+			color: #829194;
+			cursor: pointer;
+			margin: 10px 10px;
+			border: 1px solid red;
+		}
+
+		.logo:hover {
+			color: #FFFFFF;
+		}
+
+		.center {
+			position: absolute;
+			width: 100%;
+			top: 50px;
+			bottom: 100px;
+			height: 100vh;
+			border: 2px solid blue;
+		}
+
+		.bt {
+			width: 690px;
+			border: 1px solid red;
+			margin-left: 160px;
+		}
+
+		.btn {
+			display: inline-block;
+			margin-right: 5px;
+			color: #d6d5dc;
+			padding: 6px 12px;
+			margin-bottom: 0;
+			font-size: 14px;
+			font-weight: 400;
+			text-align: center;
+			background-image: none;
+			border: 1px solid transparent;
+			border-radius: 4px;
+		}
+
+		.btn:hover {
+			border: 1px solid #fff;
+			color: #fff;
+		}
+
+		.a:hover {
+			border: 1px solid #fff;
+			color: #33d37f
+		}
+
+		.gedan {
+			position: absolute;
+			left: 0;
+			right: 400px;
+			top: 60px;
+			bottom: 0;
+			width: 690px;
+		/* 	border: 1px solid red; */
+			margin-left: 160px;
+		}
+
+		.gedan table {
+			width: 690px;
+			height: 400px;
+			/* border: 1px solid red; */
+		}
+
+		.gedan table tr td {
+			color: #d6d5dc;
+			font-size: 14px;
+			border: none;
+			border-bottom: 1px solid #373737;
+		}
+		.gedan table .hou td{
+			border: none;
+		}
+		.gedan table tr{
+			height: 46px;
+		}
+		
+		.youfen{
+			    height: 100%;
+			    width: 400px;
+			    float: right;
+			    position: relative;
+				border: 1px solid red;
+				margin-top: -35px;
+				}
+		.youfen img{
+				vertical-align: middle;
+			    width: 180px;
+			    height: 180px;
+				}
+		.progress {
+		    width: auto;
+		/* 	width: 1475px; */
+		    margin-left: 150px;
+		    margin-right: 200px;
+		    height: 50px;
+		    position: relative;
+			top: 540px;
+			border: 1px solid pink;
+		}
+		.progress audio{
+			width: 900;
+		}
+	</style>
+	<body>
+		<div class="all">
+			<div class="header">
+				<div class="logo">
+					♫ FreeMusic
+				</div>
+			</div>
+			<div class="center">
+				<div class="bt">
+					<span class="btn">正在播放</span>
+					<span class="btn">播放列表</span>
+					<span class="btn">歌曲搜索</span>
+					<a href="#" class="btn a" target="_blank">淘宝优惠券</a>
+				</div>
+				<div class="gedan">
+					<table border="0" cellpadding="10" cellspacing="0">
+						<tr>
+							<td width="50px"></td>
+							<td width="550px">歌曲</td>
+							<td width="190px">歌手</td>
+							<td width="190px">专辑</td>
+						</tr>
+						<tr>
+							<td width="50px">1</td>
+							<td width="550px">会不会(吉他版)</td>
+							<td width="190px">刘大壮</td>
+							<td width="190px">会不会</td>
+						</tr>
+						<tr>
+							<td width="50px">2</td>
+							<td width="550px">是但求其爱</td>
+							<td width="190px">陈奕迅</td>
+							<td width="190px">是但求其爱</td>
+						</tr>
+						<tr>
+							<td width="50px">3</td>
+							<td width="550px">我很好(吉他版)</td>
+							<td width="190px">刘大壮</td>
+							<td width="190px">我很好</td>
+						</tr>
+						<tr>
+							<td width="50px">4</td>
+							<td width="550px">海底</td>
+							<td width="190px">一支榴莲</td>
+							<td width="190px">《独》</td>
+						</tr>
+						<tr>
+							<td width="50px">5</td>
+							<td width="550px">执迷不悟</td>
+							<td width="190px">鱿籽酱</td>
+							<td width="190px">执迷不悟</td>
+						</tr>
+						<tr>
+							<td width="50px">6</td>
+							<td width="550px">他只是经过</td>
+							<td width="190px">h3R3</td>
+							<td width="190px">他只是经过</td>
+						</tr>
+						<tr>
+							<td width="50px">7</td>
+							<td width="550px">三号线(吉他版)</td>
+							<td width="190px">刘大壮</td>
+							<td width="190px">三号线</td>
+						</tr>
+						<tr>
+							<td width="50px">8</td>
+							<td width="550px">经济舱(live)</td>
+							<td width="190px">Kafe.Hu</td>
+							<td width="190px">中国新说唱2020第十期</td>
+						</tr>
+						<tr class="hou">
+							<td width="50px">9</td>
+							<td width="550px">是想你的声音啊</td>
+							<td width="190px">傲七爷</td>
+							<td width="190px">是想你的声音啊</td>
+						</tr>
+					</table>
+				</div>
+			
+				<div class="youfen">
+					<div class="fenmian">
+						<img src="http://y.webzcz.cn/images/player_cover.png">
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="progress">
+					<audio class="dage" src="music/回忆那么伤.mp3" controls></audio>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	//歌单
+	// let tb = document.querySelector("table");
+	// console.log(tb)
+	// let h = 10;
+	// let l = 4;
+	// for(let i=0;i<h;i++){
+	// 	// 有多少行就有多少tr 
+	// 	let tr = document.createElement("tr");
+	// 	// 每个tr里面要装10个td 
+	// 	for(let k=0;k<l;k++){
+	// 		let td = document.createElement("td");
+	// 		tr.appendChild(td);
+	// 	}
+	// 	// 将tr加到table里面去
+	// 	tb.appendChild(tr);
+	// }
+</script>
