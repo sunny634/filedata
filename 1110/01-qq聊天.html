@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#all {
+				margin: 30px auto;
+				width: 255px;
+				height: 536px;
+				background-image: url(../img/iPhone.png);
+				background-repeat: no-repeat;
+				position: relative;
+			}
+
+			.content {
+				width: 217px;
+				height: 339px;
+				/* border: 2px solid #f00; */
+				padding:2px;
+				position: absolute;
+				top: 75px;
+				left: 19px;
+			}
+
+			li {
+				list-style: none;
+			}
+
+			.tou {
+				width: 22px;
+				height: 23px;
+			}
+
+			.msg {
+				line-height: 23px;
+				/* border:2px solid red; */
+				width: 165px;
+			}
+
+			/* overflow: hidden;    超出隐藏，同时具有清除漂浮的效果，也不会影响大div的高度
+			  clear:both; 清除浮动，同时也会导致大div的高度为0*/
+			li {
+				overflow: hidden;
+				margin: padding-top:10px;
+				padding-bottom: 10px;
+			}
+
+			.zuo div {
+				float: left;
+			}
+
+			.zuo .msg {
+				background-color: #F0F8FF;
+			}
+
+			ul {
+				padding-top: 10px;
+			}
+
+			.you div {
+				float: right
+			}
+
+			.you .msg {
+				background-color: lightpink;
+				text-align: right;
+			}
+
+			/* ctrl+k */
+			.bar {
+				position: absolute;
+				top: 417px;
+				left: 19px;
+				width: 215px;
+				height: 40px;
+				/* border: 3px solid red; */
+				padding:3px;
+			}
+
+			.bar div {
+				float: left;
+			}
+
+			.bar .ren {
+				width: 28px;
+				height: 30px;
+				margin-top: 3px;
+				margin-left: 3px;
+				border-radius: 5px;
+			}
+			.bar .ren img{margin-top:3px;margin-left:5px}
+
+			.bar .shuru {
+				width: 131px;
+				height: 35px;
+				
+			}
+			.bar .shuru input{
+				    width: 122px;
+				    height: 26px;
+				    border: 0;
+				    margin-left: 10px;
+				    margin-top: 4px;
+					outline: none;
+			}
+
+			.bar .send {
+				width: 45px;
+				height: 35px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="all">
+			<div class="content">
+				<ul id="neirong">
+					<!-- <li class="zuo">
+						<div class="tou"><img src="../img/qq1.gif"></div>
+						<div class="msg"><span>你好</span></div>
+					</li>
+
+				
+					<li class="you">
+						<div class="tou"><img src="../img/qq1.gif"></div>
+						<div class="msg"><span>你好</span></div>
+					</li>
+					
+					-->
+
+				</ul>
+
+			</div>
+			<div class="bar">
+				<div class="ren" onclick="huanren()">
+					<img id="ig" src="" />
+				</div>
+				<div class="shuru"><input id="ip01"/></div>
+				<div class="send" onclick="fasong()"></div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	let now = 0;
+	let tus = ["../img/qq1.gif","../img/qq2.gif"]	
+	let tu = document.getElementById("ig");
+	tu.src = tus[now];
+	
+	// 为人绑定点击事件
+	function huanren(){
+		now = now == 0 ? 1 : 0;
+		tu.src = tus[now];
+	}
+	
+	function fasong(){
+		// 获取输入框的内容
+		let ip01 = document.getElementById("ip01");
+		let n = ip01.value;
+		// 拿到内容，加到div里面就可以了
+		//0放右边，1放左边
+		// 拿到内容的div，为他添加内容即可
+		let neirong = document.getElementById("neirong");
+		
+		neirong.innerHTML += `
+			<li class="${now == 0 ? 'you' : 'zuo'}">
+				<div class="tou"><img src="${tus[now]}"></div>
+				<div class="msg"><span>${n}</span></div>
+			</li>
+		
+		
+		`
+	}
+</script>
